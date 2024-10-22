@@ -1,0 +1,105 @@
+services:
+    doctrine.migrations_multiple_database.loader:
+        class: Oscmarb\MigrationsMultipleDatabase\Bundle\DependencyInjection\DependencyFactoryLoader
+        public: true
+
+    doctrine.migrations_multiple_database.connection_configuration:
+        class: Doctrine\Migrations\Configuration\Configuration
+        public: false
+        abstract: true
+
+    doctrine.migrations_multiple_database.dependency_factory:
+        class: Doctrine\Migrations\DependencyFactory
+        public: false
+        abstract: true
+
+    doctrine_migrations.diff_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\DiffCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:diff' }
+
+    doctrine_migrations.sync_metadata_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\SyncMetadataCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:sync-metadata-storage' }
+
+    doctrine_migrations.versions_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\ListCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:list' }
+
+    doctrine_migrations.current_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\CurrentCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:current' }
+
+    doctrine_migrations.dump_schema_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\DumpSchemaCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:dump-schema' }
+
+    doctrine_migrations.execute_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\ExecuteCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:execute' }
+
+    doctrine_migrations.generate_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\GenerateCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:generate' }
+
+    doctrine_migrations.latest_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\LatestCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:latest' }
+
+    doctrine_migrations.migrate_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\MigrateCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:migrate' }
+
+    doctrine_migrations.rollup_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\RollupCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:rollup' }
+
+    doctrine_migrations.status_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\StatusCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:status' }
+
+    doctrine_migrations.up_to_date_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\UpToDateCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:up-to-date' }
+
+    doctrine_migrations.version_command:
+        class: Oscmarb\MigrationsMultipleDatabase\Command\VersionCommand
+        arguments:
+            - '@doctrine.migrations_multiple_database.loader'
+        tags:
+            - { name: 'console.command', command: 'doctrine:migrations:version' }

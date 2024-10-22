@@ -1,0 +1,30 @@
+{
+	"name": "oscmarb/doctrine-migrations-multiple-database-bundle",
+	"type": "symfony-bundle",
+	"description": "Symfony DoctrineMigrationsMultipleDatabaseBundle",
+	"keywords": ["DBAL", "Migrations", "Schema", "Multiple databases"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Óscar Martínez",
+			"email": "oscmarb@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=7.2",
+		"doctrine/doctrine-bundle": "~1.0|~2.0",
+		"doctrine/migrations": "~3.0",
+		"symfony/framework-bundle": "^5.4|^6.4|~7.0",
+		"doctrine/doctrine-migrations-bundle": "^3"
+	},
+	"require-dev": {
+		"doctrine/orm": "^2.6",
+		"friendsofphp/php-cs-fixer": "^2.16",
+		"phpstan/phpstan-strict-rules": "^1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Oscmarb\\MigrationsMultipleDatabase\\": "src/"
+		}
+	}
+}
